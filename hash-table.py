@@ -8,3 +8,36 @@ class HashTable:
         for char in key:
             h += ord(char)
         return h % self.MAX
+
+    def add(self, key, value):
+        h = self.get_hash(key)
+        self.arr[h] = value
+
+    # built in python operator that allows us to get the add functionality with just square brackets
+    def __setitem__(self, key, value):
+        h = self.get_hash(key)
+        self.arr[h] = value
+
+    def get(self, key):
+        h = self.get_hash(key)
+        return self.arr[h]
+
+    # built in python operator that allows us to get an item by just putting the key within square brackets
+    def __getitem__(self, key):
+        h = self.get_hash(key)
+        return self.arr[h]
+
+    def __delitem__(self, key):
+        h = self.get_hash(key)
+        self.arr[h] = None
+
+
+t = HashTable()
+t.add('march 10', 205)
+new_day = t['march 11'] = 212
+print(new_day)
+print(t.add('march 11', 212))
+print(t['march 10'])
+print(t.get('march 10'))
+del t['march 10']
+print(t['march 10'])
