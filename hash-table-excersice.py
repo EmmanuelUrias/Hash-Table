@@ -17,3 +17,15 @@ def average(lst):
 
 
 print(average(jan))
+
+# Exercise 2
+
+
+def find_day(day):
+    for element in jan:
+        if day in element:
+            return f'{day}: {element[day]}'
+    return 'day not found'
+
+
+print(find_day('January 1st'))
